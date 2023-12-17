@@ -10,16 +10,23 @@
 // Кожен наступний елемент повинен бути ширшим і вищим від попереднього на 10px.
 // Усі елементи повинні мати випадковий колір фону. Використовуй готову функцію getRandomHexColor() для отримання випадкового кольору.
 
+// function getRandomHexColor() {
+//   return `#${Math.floor(Math.random() * 16777215)
+//     .toString(16)
+//     .padStart(6, "0")}`;
+// }
+
+const input = document.querySelector("input[type='number']");
+
+const destroyButton = document.querySelector("[data-destroy]");
+const boxesContainer = document.querySelector("#boxes");
+const createButton = document.querySelector("[data-create]");
+
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
     .toString(16)
-    .padStart(6, "0")}`;
+    .padStart(6, 0)}`;
 }
-
-const input = document.querySelector("#input");
-const createButton = document.querySelector("#createButton");
-const destroyButton = document.querySelector("#destroyButton");
-const boxesContainer = document.querySelector("#boxes");
 
 createButton.addEventListener("click", createBoxes);
 destroyButton.addEventListener("click", destroyBoxes);
@@ -40,6 +47,10 @@ function createBoxes() {
     boxesContainer.append(...boxes);
     input.value = "";
   } else {
-    alert("Enter a number from 1 to 100");
+    alert("Please enter a number between 1 and 100.");
   }
+}
+
+function destroyBoxes() {
+  boxesContainer.innerHTML = "";
 }
